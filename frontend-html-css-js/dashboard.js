@@ -39,7 +39,9 @@ const unitSets = {
             if (from === "Fahrenheit") celsius = (value - 32) * (5 / 9);
             if (from === "Kelvin") celsius = value - 273.15;
 
-            if (to === "Celsius") return celsius;
+            if (to === "Celsius") {
+                return celsius;
+            }
             if (to === "Fahrenheit") return celsius * (9 / 5) + 32;
             return celsius + 273.15;
         }
