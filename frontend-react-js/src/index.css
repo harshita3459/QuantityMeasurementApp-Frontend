@@ -338,7 +338,7 @@ button {
   background: linear-gradient(135deg, rgba(250, 168, 62, 0.72) 0%, rgba(209, 250, 229, 0.78) 52%, rgba(255, 255, 255, 0.95) 100%);
   background-position: 100% 40%;
   color: #155e75;
-}
+} 
 
 .type-btn.active {
   /* Background overlay with gradient effect */

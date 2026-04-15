@@ -12,21 +12,17 @@ function Register({ onRegisterSuccess }) {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setError('');
-
-    const result = registerWithEmail(formData);
-    if (!result.ok) {
-      setError(result.error);
-      return;
-    }
-
+    const result = await registerWithEmail(formData);  // now async
+    if (!result.ok) { setError(result.error); return; }
     onRegisterSuccess(result.session);
   };
 
-  const handleSuccess = (credentialResponse) => {
-    const result = loginWithGoogleCredential(credentialResponse);
+
+  const handleSuccess = async (credentialResponse) => {
+    const result = await loginWithGoogleCredential(credentialResponse);
     if (!result.ok) {
       setError(result.error);
       return;
