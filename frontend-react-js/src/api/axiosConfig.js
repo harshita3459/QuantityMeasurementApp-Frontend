@@ -3,7 +3,7 @@ import axios from 'axios';
 const api = axios.create({
     baseURL: import.meta.env.VITE_API_BASE_URL || '',
     headers: { 'Content-Type': 'application/json' },
-    timeout: 10000,
+    timeout: 60000, // 60 seconds — Render free tier cold start can take ~1 min
 });
 
 // Attach JWT on every request automatically
@@ -25,7 +25,6 @@ api.interceptors.response.use(
         if (error.response?.status === 401) {
             const session = localStorage.getItem('qm_auth_session');
 
-            // ✅ Only redirect if user was logged in earlier
             if (session) {
                 localStorage.removeItem('qm_jwt_token');
                 localStorage.removeItem('qm_auth_session');
